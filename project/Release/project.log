@@ -1,0 +1,19 @@
+﻿Построение начато 18.02.2014 23:32:14.
+     1>Проект "c:\Users\Артём\documents\visual studio 2010\Projects\project\project\project.vcxproj" в узле 2 (целевые объекты rebuild).
+     1>PrepareForBuild:
+         Создание каталога "c:\users\артём\documents\visual studio 2010\Projects\project\Release\".
+       InitializeBuildStatus:
+         Создание "Release\project.unsuccessfulbuild", так как было задано "AlwaysCreate".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>main.cpp(10): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+     1>main.cpp(11): error C2664: init: невозможно преобразовать параметр 1 из "int" в "int [][10]"
+                 Для преобразования из целого типа в указатель требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции
+     1>main.cpp(12): error C2664: display: невозможно преобразовать параметр 1 из "int" в "int [][10]"
+                 Для преобразования из целого типа в указатель требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции
+     1>Построение проекта "c:\Users\Артём\documents\visual studio 2010\Projects\project\project\project.vcxproj" завершено (целевые объекты rebuild) с ошибкой.
+
+СБОЙ построения.
+
+Затраченное время: 00:00:00.35
