@@ -6,6 +6,7 @@
 #include <fstream>
 int provFile(char);
 int Find (int b[100], int, int );
+int Find1 (int b[100], int, int );
 using namespace std;
 int main()
 {  
@@ -30,10 +31,15 @@ int main()
 	    {    
              in.get(a);
 			 if (in.eof()) break;
-			 if(a!=32)
+			 if(a!=32||in.eof())
 			 {b[j]=provFile(a);j++;}
 			 else 
-			 {if(Find(b, j, 0)==1)out<<"(YES)";j=0;}
+			 { sort(b, b + j);
+			 if(Find(b, j, 0)==1)
+			 out<<"(V:YES)";
+			 if(Find1(b, j, 1)==1)
+			 out<<"(S:YES)";
+			 j=0;}
 			 if(provFile(a)==0)glas++;
  			 else if(provFile(a)==1)soglas++;
  			 out<<a;
@@ -58,7 +64,7 @@ int provFile(char a)
 	else if (a=='E'||a=='e') count=0;
 	else if (a=='F'||a=='f') count=1;
 	else if (a=='G'||a=='g') count=1;
-	else if (a=='H'||a=='H') count=1;
+	else if (a=='H'||a=='h') count=1;
 	else if (a=='I'||a=='i') count=0;
 	else if (a=='J'||a=='j') count=1;
 	else if (a=='K'||a=='k') count=1;
@@ -73,7 +79,7 @@ int provFile(char a)
 	else if (a=='T'||a=='t') count=1;
 	else if (a=='V'||a=='v') count=1;
 	else if (a=='W'||a=='w') count=1;
-	else if (a=='U'||a=='u') count=1;
+	else if (a=='U'||a=='u') count=0;
 	else if (a=='X'||a=='x') count=1;
 	else if (a=='Y'||a=='y') count=1;
 	else if (a=='Z'||a=='z') count=1;
@@ -83,10 +89,10 @@ int provFile(char a)
 }
 int Find(int a[100], int r, int x)
 {int l=0;
-while(r - l > 1)
+while(r - l >1)
     //пока результат не станет однозначным
     {
-        int mid = (l + r) / 2;
+        int mid = l+(r - l) / 2;
         //делим отрезок [l,r] пополам
         if(a[mid]<x)
         //првоеряем где находимся
@@ -105,6 +111,11 @@ while(r - l > 1)
             return 1;
     return 0;// не нашли такого элемента
 
+}
+int Find1 (int b[100], int j, int x )
+{  for(int i=0;i<j;i++)
+	if(b[i]==x) return 1;
+return 0;
 }
 
 	
