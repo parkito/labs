@@ -1,5 +1,6 @@
 #include<iostream>
 #include <ctime>
+#include <math.h>
 #include <iomanip>
 #include <stdlib.h>
 using namespace std;
@@ -46,7 +47,7 @@ int main()
 	  int min=-100,max=100;
 	  for(int i=0;i<A;i++)
 		 for(int j=0;j<B;j++)
-	  obs[i][j]=1;//min + rand() % (max - min); 
+	  obs[i][j]=11;min + rand() % (max - min); 	 
 	  upd(obs, Arr);
 	  cout<<endl<<"Неотсортированная матрица "<<endl<<endl;
 	  //Функция для разбиения массива на столбцы
@@ -73,7 +74,7 @@ int main()
 
       void razbit(int *temp,int **Arr,int **obs)
          {    
-	        for(int count = 0;count<5;count++)
+	        for(int count = 0;count<=5;count++)
 	           {  
 	               //Функция для обновления массива
 	              display(Arr);
@@ -109,13 +110,13 @@ int main()
 
        void puz(int *temp)
           {
-	         int tmp, i, j;
-             for(i = 0; i < A - 1 ; ++i) // i - номер прохода
+	         int tmp, i, j,z=A;
+             for(i = 0; i < z - 1 ; ++i) // i - номер прохода
 	            {
 		           for(j = 0; j < A - 1 - i ; ++j) // внутренний цикл прохода
 		              { 
-					     if(j+1>j)SravPuz++;
-			             if (temp[j + 1] < temp[j])
+					     SravPuz++;
+			             if (abs(temp[j + 1]) < abs(temp[j]))
 		                	{
 								NazPuz++;
 				                tmp = temp[j + 1];
@@ -123,43 +124,46 @@ int main()
 				                temp[j] = tmp;
 			                }
 		                }
+				   if(NazPuz==0)z=0;
 	              }
+			 
+
 }
 
        void otbor(int* temp) //выбор наименьшего
           {
-	         int tmp, i, j, pos;
-	         for(i = 0; i < A; ++i) // i - номер текущего шага
+	         int tmp, i, j, pos,z=A;
+	         for(i = 0; i < z; ++i) // i - номер текущего шага
 	            { 
 		           pos = i; 
 		           tmp = temp[i];
-		           for(j = i + 1; j < A; ++j) // цикл выбора наименьшего элемента
+		           for(j = i + 1; j < z; ++j) // цикл выбора наименьшего элемента
 		           { 
 					   SravOtbor++;
-			           if (temp[j] < tmp) 
+			           if (abs(temp[j]) < abs(tmp)) 
 			              {
 			                 pos = j; 
 			                 tmp = temp[j]; 
 			               }
 		            }
-		      if(temp[pos]!=temp[i])
+		      if(abs(temp[pos])!=abs(temp[i]))
 		      NazOtbor++;
 		      temp[pos] = temp[i]; 
 		      temp[i] = tmp; // меняем местами наименьший с a[i]
-	             }
+	             if(NazOtbor==0)z=0;}
               }
 
 	   void vstav(int* temp)// выбирается кей и сравнивается с предыдущими с каждым предыдущим
 	   {
-		   int temp1,key;
-	       for (int i=0; i<A-1; i++)
+		   int temp1,key,z=A;
+	       for (int i=0; i<z-1; i++)
 	          {
 		         key=i+1;
 		         temp1=temp[key];
 		         for (int j=i+1; j>0; j--)
 		           {
 					  SravVstav++;
-		              if (temp1<temp[j-1])
+		              if (abs(temp1)<abs(temp[j-1]))
 		                { 
 			               NazVstav++;
 		                   temp[j]=temp[j-1];
@@ -167,7 +171,9 @@ int main()
 		                 }
 		           }
 		           temp[key]=temp1;
+				   
 	            }
+		                if(NazVstav==0)z=0;
 	   }
 	   void Shell(int *temp)
 	     { 
@@ -179,7 +185,7 @@ int main()
 			           int j = i;
 			           //будем идти начиная с i-го элемента
 			           SravShell++; 
-			           while (j >= 0 && temp[j] > temp[j + step])
+			           while (j >= 0 && abs(temp[j]) > abs(temp[j + step]))
 				       //пока не пришли к началу массива
 				       //и пока рассматриваемый элемент больше
 				       //чем элемент находящийся на расстоянии шага
@@ -207,13 +213,13 @@ int main()
 		   while(i <= j)
 		      { 
 				  SravQuick++;
-		          while(a[i] < x) {SravQuick++;i++;}
-		          while(a[j] > x) {SravQuick++;j--;}
+		          while(abs(a[i]) < abs(x)) {SravQuick++;i++;}
+		          while(abs(a[j]) > abs(x)) {SravQuick++;j--;}
 
 		          if(i <= j)
 		             {  
 						 swap(a[i], a[j]);
-		                 if(a[i]<a[j])NazQuick++;
+		                 if(abs(a[i])<abs(a[j]))NazQuick++;
 		                 i++;
 		                 j--;
 		               }
