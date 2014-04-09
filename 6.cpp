@@ -47,8 +47,8 @@ int main()
 	  int min=-100,max=100;
 	  for(int i=0;i<A;i++)
 		 for(int j=0;j<B;j++)
-	  obs[i][j]=11;min + rand() % (max - min); 	 
-	  upd(obs, Arr);
+	  obs[i][j]=11;//min + rand() % (max - min); 
+	   upd(obs, Arr);
 	  cout<<endl<<"Неотсортированная матрица "<<endl<<endl;
 	  //Функция для разбиения массива на столбцы
 	  razbit(temp,Arr,obs);
