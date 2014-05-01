@@ -11,7 +11,7 @@ int Hash(char);
 int main()
 {   
 	setlocale(LC_ALL, "Rus");
-    fstream read,read1;
+    fstream read,read1,read2,read3,read4;
     ofstream save;
 	ofstream in;
 	fstream in1;
@@ -34,7 +34,7 @@ int main()
 	{       
 		     if (read.eof()) break;
 		     read.get(Data);			 
-			 if(razdel<=3)
+			 if(razdel<3)
 			 {
 			    if(Data==';')
 			    {   
@@ -50,11 +50,10 @@ int main()
 			 else
 			 {
 				 razdel=0;
-				 save<<endl;
+				 //save<<endl;
 			 }
 	}
-
-	read.close();
+read.close();
 	save.close();
 	
 	cout<<"Введите имя --> ";
@@ -66,36 +65,36 @@ int main()
 	cout<<"Введите телефон --> ";
 	cin.getline(mobile,10);
 	in<<mobile<<';';
-	razdel=0;
 	in.close();
 	in1.open("In.txt");
+	razdel=0;
 	while(1)
-	{        if (in1.eof()) break;
-		     in1.get(Data);
-			 if(razdel<4)
+	{       
+		     if (in1.eof()) break;
+		     in1.get(Data);			 
+			 if(razdel<3)
 			 {
-			    
-			    hashin<<Hash(Data);
-			 
-			   if(Data==';')
+			    if(Data==';')
 			    {   
 				   razdel++;
 				   hashin<<';';
 			    }
 
+			    else hashin<<Hash(Data);
+			 	   
+
 			 }
 
-			 if(razdel==4)
+			 else
 			 {
 				 razdel=0;
-				 hashin<<endl;
+				// hashin<<endl;
 			 }
 	}
 	in1.close();
 	hashin.close();
-
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    read.open("HashDatabase.txt");
+	read2.open("HashDatabase.txt");
 	read1.open("HashIn.txt");
 	int i=0,j=0,coutS=0,coutP=0,simbolsD=0,simbolsI=0,provSimbols=0;
 	char provD, provI,arrD[50],arrI[50];
@@ -103,6 +102,55 @@ int main()
 	{       
 		 if(read1.eof())break;
 	     read1.get(provI);
+		 if(provI!=';'&&provI!=9)
+		  {
+		    arrI[i]=provI;
+		    i++;
+			simbolsI++;
+		  }
+
+
+	}
+	while(1)
+	{   if(read2.eof())break;    
+		while(coutS<3)
+		 {
+		     read2.get(provD);
+		     if(provD==';')
+			    coutS++;
+		
+		     else
+		       {
+	             arrD[j]=provD;
+			     simbolsD++;
+		         j++;
+		       }
+		  }
+		j=0;
+		coutS=0;
+		 
+		  if(simbolsI==simbolsD)
+		    {
+			    for(int k=0;k<simbolsI;k++)
+					if(arrI[k]==arrD[k])
+						provSimbols++;
+				if(provSimbols==simbolsI)
+				{coutP++;}
+		    }
+		  coutS=0,simbolsD=0,provSimbols=0;
+	}
+	read2.close();
+	read1.close();	
+	cout<<"Совпадений по хешу "<<coutP<<endl;
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	read3.open("Database.txt");
+	read4.open("In.txt");
+	 i=0,j=0,coutS=0,coutP=0,simbolsD=0,simbolsI=0,provSimbols=0;
+	
+	while(1)
+	{       
+		 if(read4.eof())break;
+	     read4.get(provI);
 		 if(provI!=';')
 		  {
 		    arrI[i]=provI;
@@ -113,12 +161,13 @@ int main()
 
 	}
 	while(1)
-	{   if(read.eof())break;    
-		while(coutS<4)
+	{   if(read3.eof())break;    
+		while(coutS<3)
 		 {
-		     read.get(provD);
+		     read3.get(provD);
 		     if(provD==';')
 			    coutS++;
+			 	 else if  (provD==10) {;}
 		     else
 		       {
 	             arrD[j]=provD;
@@ -127,6 +176,7 @@ int main()
 		       }
 		  }
 		j=0;
+		coutS=0;
 		 
 		  if(simbolsI==simbolsD)
 		    {
@@ -134,14 +184,14 @@ int main()
 					if(arrI[k]==arrD[k])
 						provSimbols++;
 				if(provSimbols==simbolsI)
-				{coutP++;cout<<coutP;}
+				{coutP++;}
 		    }
 		  coutS=0,simbolsD=0,provSimbols=0;
 	}
-	read.close();
-	read1.close();
-	//cout<<coutP;
-	
+	read3.close();
+	read4.close();	
+	cout<<"Точечных совпадений "<<coutP<<endl;
+
 	cin.get();
 	cin.get();
 	return 0;
