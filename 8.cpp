@@ -11,7 +11,7 @@ int Hash(char);
 int main()
 {   
 	setlocale(LC_ALL, "Rus");
-    fstream read;
+    fstream read,read1;
     ofstream save;
 	ofstream in;
 	fstream in1;
@@ -32,10 +32,9 @@ int main()
 	int razdel=0;
 	while(1)
 	{       
-		    if (read.eof()) break;
-		     read.get(Data);
-			 
-			 if(razdel<4)
+		     if (read.eof()) break;
+		     read.get(Data);			 
+			 if(razdel<=3)
 			 {
 			    if(Data==';')
 			    {   
@@ -51,9 +50,12 @@ int main()
 			 else
 			 {
 				 razdel=0;
-				 save<<endl<<endl;
+				 save<<endl;
 			 }
 	}
+
+	read.close();
+	save.close();
 	
 	cout<<"¬ведите им€ --> ";
 	cin.getline(name,15);
@@ -68,11 +70,11 @@ int main()
 	in.close();
 	in1.open("In.txt");
 	while(1)
-	{        
+	{        if (in1.eof()) break;
 		     in1.get(Data);
 			 if(razdel<4)
 			 {
-			    if (in1.eof()) break;
+			    
 			    hashin<<Hash(Data);
 			 
 			   if(Data==';')
@@ -89,7 +91,57 @@ int main()
 				 hashin<<endl;
 			 }
 	}
-    
+	in1.close();
+	hashin.close();
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    read.open("HashDatabase.txt");
+	read1.open("HashIn.txt");
+	int i=0,j=0,coutS=0,coutP=0,simbolsD=0,simbolsI=0,provSimbols=0;
+	char provD, provI,arrD[50],arrI[50];
+	while(1)
+	{       
+		 if(read1.eof())break;
+	     read1.get(provI);
+		 if(provI!=';')
+		  {
+		    arrI[i]=provI;
+		    i++;
+			simbolsI++;
+		  }
+
+
+	}
+	while(1)
+	{   if(read.eof())break;    
+		while(coutS<4)
+		 {
+		     read.get(provD);
+		     if(provD==';')
+			    coutS++;
+		     else
+		       {
+	             arrD[j]=provD;
+			     simbolsD++;
+		         j++;
+		       }
+		  }
+		j=0;
+		 
+		  if(simbolsI==simbolsD)
+		    {
+			    for(int k=0;k<simbolsI;k++)
+					if(arrI[k]==arrD[k])
+						provSimbols++;
+				if(provSimbols==simbolsI)
+				{coutP++;cout<<coutP;}
+		    }
+		  coutS=0,simbolsD=0,provSimbols=0;
+	}
+	read.close();
+	read1.close();
+	//cout<<coutP;
+	
 	cin.get();
 	cin.get();
 	return 0;
