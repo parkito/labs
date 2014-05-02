@@ -6,7 +6,7 @@
 #include <string>
 #include <fstream>
 using namespace std;
-char name[15], SecondName[15],mobile[10],Data;
+char name[40], SecondName[40],mobile[40],Data;
 int Hash(char);
 int main()
 {   
@@ -57,13 +57,13 @@ read.close();
 	save.close();
 	
 	cout<<"¬ведите им€ --> ";
-	cin.getline(name,15);
+	cin.getline(name,40);
 	in<<name<<';';
 	cout<<"¬ведите фамилию --> ";
-	cin.getline(SecondName,15);
+	cin.getline(SecondName,40);
 	in<<SecondName<<';';
 	cout<<"¬ведите телефон --> ";
-	cin.getline(mobile,10);
+	cin.getline(mobile,40);
 	in<<mobile<<';';
 	in.close();
 	in1.open("In.txt");
@@ -97,7 +97,7 @@ read.close();
 	read2.open("HashDatabase.txt");
 	read1.open("HashIn.txt");
 	int i=0,j=0,coutS=0,coutP=0,simbolsD=0,simbolsI=0,provSimbols=0;
-	char provD, provI,arrD[50],arrI[50];
+	char provD, provI,arrD[120],arrI[120];
 	while(1)
 	{       
 		 if(read1.eof())break;
