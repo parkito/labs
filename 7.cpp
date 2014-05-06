@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <windows.h>
 #include <algorithm>
 #include <stdio.h>
@@ -27,7 +27,7 @@ int main()
       	  if (in.fail())
 	     {
             SetConsoleTextAttribute(hStdout, 15);
-			cout<<"Не удалось открыть файл!";
+			cout<<"РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»!";
 			cin.get();
 	        cin.get();
             return 0;
@@ -35,7 +35,7 @@ int main()
 
 		  
 		  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		   SetConsoleTextAttribute(hStdout, 15);cout<<"Последовательный поиск "<<endl<<endl;
+		   SetConsoleTextAttribute(hStdout, 15);cout<<"РџРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅС‹Р№ РїРѕРёСЃРє "<<endl<<endl;
 		  
      while(1) 
 	    {    
@@ -71,12 +71,12 @@ int main()
 	int *b=new int[size_arr];
 	 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	 in.close();
-	 SetConsoleTextAttribute(hStdout, 15);cout<<endl<<endl<<"Бинарный поиск "<<endl<<endl;
+	 SetConsoleTextAttribute(hStdout, 15);cout<<endl<<endl<<"Р‘РёРЅР°СЂРЅС‹Р№ РїРѕРёСЃРє "<<endl<<endl;
 	 in.open("input.txt");
 	 if (in.fail())
 	     {
             SetConsoleTextAttribute(hStdout, 15);
-		    cout<<"Не удалось открыть файл!";
+		    cout<<"РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»!";
 			cin.get();
 	        cin.get();
             return 0;
@@ -103,7 +103,7 @@ int main()
 	 
 	 sort(b, b + i);
 	 SetConsoleTextAttribute(hStdout, 15);
-	 cout<<endl<<endl<<"Сортируем "<<endl<<endl;
+	 cout<<endl<<endl<<"РЎРѕСЂС‚РёСЂСѓРµРј "<<endl<<endl;
 	 for(int k=0;k<i;k++)
 	 {
 		 if(b[k]==1) 
@@ -164,12 +164,12 @@ int provFile(char a)
 int Find(int *a, int r, int x)
 {int l=0;
 while(r - l >1)
-    //пока результат не станет однозначным
+    //РїРѕРєР° СЂРµР·СѓР»СЊС‚Р°С‚ РЅРµ СЃС‚Р°РЅРµС‚ РѕРґРЅРѕР·РЅР°С‡РЅС‹Рј
     {
         int mid = l+(r - l) / 2;
-        //делим отрезок [l,r] пополам
+        //РґРµР»РёРј РѕС‚СЂРµР·РѕРє [l,r] РїРѕРїРѕР»Р°Рј
         if(a[mid]<x)
-        //првоеряем где находимся
+        //РїСЂРІРѕРµСЂСЏРµРј РіРґРµ РЅР°С…РѕРґРёРјСЃСЏ
         {
             l = mid;
         }
@@ -183,7 +183,7 @@ while(r - l >1)
     for(int i = l; i <= r; i++)
         if(a[i]==x)
             return i;
-    return 0;// не нашли такого элемента
+    return 0;// РЅРµ РЅР°С€Р»Рё С‚Р°РєРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
 
 }
 

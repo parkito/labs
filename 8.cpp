@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <windows.h>
 #include <algorithm>
 #include <stdio.h>
@@ -23,7 +23,7 @@ int main()
 	if (read.fail()||save.fail())
 	     {
             
-			cout<<"Íå óäàëîñü îòêğûòü ôàéë!";
+			cout<<"ĞĞµ ÑƒĞ´Ğ°Ğ»Ğ¾ÑÑŒ Ğ¾Ñ‚ĞºÑ€Ñ‹Ñ‚ÑŒ Ñ„Ğ°Ğ¹Ğ»!";
 			cin.get();
 	        cin.get();
             return 0;
@@ -56,13 +56,13 @@ int main()
 read.close();
 	save.close();
 	
-	cout<<"Ââåäèòå èìÿ --> ";
+	cout<<"Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¸Ğ¼Ñ --> ";
 	cin.getline(name,40);
 	in<<name<<';';
-	cout<<"Ââåäèòå ôàìèëèş --> ";
+	cout<<"Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ñ„Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ --> ";
 	cin.getline(SecondName,40);
 	in<<SecondName<<';';
-	cout<<"Ââåäèòå òåëåôîí --> ";
+	cout<<"Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ñ‚ĞµĞ»ĞµÑ„Ğ¾Ğ½ --> ";
 	cin.getline(mobile,40);
 	in<<mobile<<';';
 	in.close();
@@ -141,7 +141,7 @@ read.close();
 	}
 	read2.close();
 	read1.close();	
-	cout<<"Ñîâïàäåíèé ïî õåøó "<<coutP<<endl;
+	cout<<"Ğ¡Ğ¾Ğ²Ğ¿Ğ°Ğ´ĞµĞ½Ğ¸Ğ¹ Ğ¿Ğ¾ Ñ…ĞµÑˆÑƒ "<<coutP<<endl;
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	read3.open("Database.txt");
 	read4.open("In.txt");
@@ -190,7 +190,7 @@ read.close();
 	}
 	read3.close();
 	read4.close();	
-	cout<<"Òî÷å÷íûõ ñîâïàäåíèé "<<coutP<<endl;
+	cout<<"Ğ¢Ğ¾Ñ‡ĞµÑ‡Ğ½Ñ‹Ñ… ÑĞ¾Ğ²Ğ¿Ğ°Ğ´ĞµĞ½Ğ¸Ğ¹ "<<coutP<<endl;
 
 	cin.get();
 	cin.get();
