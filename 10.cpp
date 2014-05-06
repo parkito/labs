@@ -1,4 +1,4 @@
-#include "stdio.h"
+п»ї#include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
 #include "conio.h"
@@ -6,36 +6,37 @@
 #include "windows.h"
 #include <string>
 #include <ctype.h>
+#include <fstream>
 using namespace std;
-string EnterText, AddText;
+string EnterText, AddText, AddTextFromFile;
 int SizeText, TimeLifeOfWhile=0, choose;
 
 int main()
 {   
     setlocale(LC_ALL, "Rus");
-	cout<<"Введите свой текст --> ";
+	cout<<"Р’РІРµРґРёС‚Рµ СЃРІРѕР№ С‚РµРєСЃС‚ --> ";
 	getline(cin,EnterText);
 	cout<<EnterText;
 	
 	while(TimeLifeOfWhile==0)
 		{
-		cout<<endl<<"Операции "<<endl<<"1> - Добавление текста"<<endl<<"2> - Замена строчных букв на прописные"<<endl<<"3> - Добавление из файла"<<endl<<"4> - Выход из программы"<<endl<<"-->";
+		cout<<endl<<"РћРїРµСЂР°С†РёРё "<<endl<<"1> - Р”РѕР±Р°РІР»РµРЅРёРµ С‚РµРєСЃС‚Р°"<<endl<<"2> - Р—Р°РјРµРЅР° СЃС‚СЂРѕС‡РЅС‹С… Р±СѓРєРІ РЅР° РїСЂРѕРїРёСЃРЅС‹Рµ"<<endl<<"3> - Р”РѕР±Р°РІР»РµРЅРёРµ РёР· С„Р°Р№Р»Р°"<<endl<<"4> - Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹"<<endl<<"-->";
     SizeText=EnterText.length();	
 	cin>>choose;
 	if(choose<1||choose>4)
 	{
-		cout<<"Ошибка !!! ";
+		cout<<"РћС€РёР±РєР° !!! ";
 	    cin.get();
 	    cin.get();
 		exit(0);
 	}
 	else if (choose==1)
 	{
-	cout<<"Введите текст для добавления --> ";
+	cout<<"Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ --> ";
 	cin.ignore();
     getline(cin,AddText);
 	EnterText=EnterText+AddText;
-	cout<<endl<<"Результат"<<endl<<EnterText;
+	cout<<endl<<"Р РµР·СѓР»СЊС‚Р°С‚"<<endl<<EnterText;
 
 	}
 	else if (choose==2)
@@ -52,10 +53,24 @@ int main()
 		}
 		
 	
-		cout<<endl<<"Результат"<<endl<<EnterText;
+		cout<<endl<<"Р РµР·СѓР»СЊС‚Р°С‚"<<endl<<EnterText;
 	}
 	else if (choose==3)
-	{}
+	{
+		ifstream in;
+		in.open("Text.txt");
+		if (in.fail())
+	     {            
+			cout<<"РћС€РёР±РєР°. Р¤Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ! ";
+			cin.get();
+	        cin.get();
+            exit(0);
+         }
+		in>>AddTextFromFile;
+		EnterText=EnterText+AddTextFromFile;
+		cout<<endl<<"Р РµР·СѓР»СЊС‚Р°С‚"<<endl<<EnterText;
+		in.close();
+	}
 	else if (choose==4)
 	{
 	  cin.get();
