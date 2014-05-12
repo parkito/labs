@@ -9,7 +9,8 @@
 #include <fstream>
 using namespace std;
 string EnterText, AddText, AddTextFromFile;
-int SizeText, TimeLifeOfWhile=0, choose;
+int SizeText, TimeLifeOfWhile=0;
+double choose;
 
 int main()
 {   
@@ -23,7 +24,8 @@ int main()
 		cout<<endl<<"Операции "<<endl<<"1> - Добавление текста"<<endl<<"2> - Замена строчных букв на прописные"<<endl<<"3> - Добавление из файла"<<endl<<"4> - Выход из программы"<<endl<<"-->";
     SizeText=EnterText.length();	
 	cin>>choose;
-	if(choose<1||choose>4)
+	int ch=choose;
+	if((choose-ch)!=0||(choose<1||choose>4))
 	{
 		cout<<"Ошибка !!! ";
 	    cin.get();
