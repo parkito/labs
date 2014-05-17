@@ -7,6 +7,7 @@
 #include <string>
 #include <ctype.h>
 #include <fstream>
+#include <sstream>
 using namespace std;
 string EnterText, AddText, AddTextFromFile;
 int SizeText, TimeLifeOfWhile=0;
@@ -68,11 +69,17 @@ int main()
 	        cin.get();
             exit(0);
          }
-		in>>AddTextFromFile;
+
+	std::ifstream file("Text.txt");
+std::ostringstream oss;
+oss << file.rdbuf();
+std::string str = oss.str();
+AddTextFromFile=str;
 		EnterText=EnterText+AddTextFromFile;
 		cout<<endl<<"Результат"<<endl<<EnterText;
 		in.close();
-	}
+	
+}
 	else if (choose==4)
 	{
 	  cin.get();
