@@ -15,7 +15,18 @@ using namespace std;
 int main()
 {    
     setlocale(LC_ALL, "Rus");
-//////////////////////////////////////////////////////////////
+	typedef double (*function)(double, double);
+	HINSTANCE my_dll = LoadLibraryA("my_dll.dll");
+	if(my_dll==NULL)
+	{
+		cout<<"Ошибка открытия DLL";
+		cin.get();
+	    cin.get();
+		exit(0);
+	}
+
+	function mycosec = (function)GetProcAddress(my_dll, "my_func");
+	//////////////////////////////////////////////////////////////
 	cout<<"Ввеедите Epsilon --> ";
     cin>>eps;
     if(eps<=0)
@@ -70,8 +81,8 @@ for( ;XStart<=XEnd;XStart=XStart+DX)
 	if((1/XStart)!=NULL)
 	{
        cosec=(1/sin(XStart))*(1/sin(XStart));
-       delta=sqrt(abs(mycosec*mycosec-cosec*cosec));
-       printf("|%15.7f|%20.10f|%20.10f|%20.10f|\n",XStart,mycosec(XStart)*mycosec(XStart),cosec,delta);
+       delta=sqrt(abs( pow(mycosec(XStart,eps),2)-pow(cosec,2) ) );
+       printf("|%15.7f|%20.10f|%20.10f|%20.10f|\n",XStart,mycosec(XStart,eps),cosec,delta);
 	}
 	else 
    {
@@ -96,8 +107,8 @@ printf("|---------------|--------------------|--------------------|-------------
       {
             
            cosec=(1/sin(XIdeal))*(1/sin(XIdeal));
-           delta=sqrt(abs(mycosec*mycosec-cosec*cosec));
-           printf("|%15.7f|%20.10f|%20.10f|%20.10f|\n",XIdeal,mycosec(XIdeal)*mycosec(XIdeal),cosec,delta);
+           delta=sqrt(abs( pow(mycosec(XIdeal,eps),2)-pow(cosec,2) ) );
+           printf("|%15.7f|%20.10f|%20.10f|%20.10f|\n",XIdeal,mycosec(XIdeal,eps),cosec,delta);
 
 
        }
@@ -109,15 +120,7 @@ else
 
 
 
-	HINSTANCE my_dll = LoadLibraryA("my_dll.dll");
-	if(my_dll==NULL)
-	{
-		cout<<"Ошибка открытия DLL";
-		cin.get();
-	    cin.get();
-		exit(0);
-	}
-
+	
 	
 	  	
 	cin.get();
