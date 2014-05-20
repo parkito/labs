@@ -1,4 +1,4 @@
-#include<iostream>
+Ôªø#include<iostream>
 #include<math.h>
 #include<conio.h>
 #include<windows.h>
@@ -19,7 +19,7 @@ int main()
 	HINSTANCE my_dll = LoadLibraryA("my_dll.dll");
 	if(my_dll==NULL)
 	{
-		cout<<"Œ¯Ë·Í‡ ÓÚÍ˚ÚËˇ DLL";
+		cout<<"–û—à–∏–±–∫–∞ –æ—Ç–∫—Ä—ã—Ç–∏—è DLL";
 		cin.get();
 	    cin.get();
 		exit(0);
@@ -27,22 +27,22 @@ int main()
 
 	function mycosec = (function)GetProcAddress(my_dll, "my_func");
 	//////////////////////////////////////////////////////////////
-	cout<<"¬‚ÂÂ‰ËÚÂ Epsilon --> ";
+	cout<<"–í–≤–µ–µ–¥–∏—Ç–µ Epsilon --> ";
     cin>>eps;
     if(eps<=0)
 	{
 		
-		cout<<"Œ¯Ë·Í‡";
+		cout<<"–û—à–∏–±–∫–∞";
 		cin.get();
 	    cin.get();
 		exit(0);
 	}
 
-cout<<"¬‚Â‰ËÚÂ X Ì‡˜‡Î¸ÌÓÂ --> ";
+cout<<"–í–≤–µ–¥–∏—Ç–µ X –Ω–∞—á–∞–ª—å–Ω–æ–µ --> ";
 cin>>XStart;
-cout<<"¬‚Â‰ËÚÂ X ÍÓÌÂ˜ÌÓÂ --> ";
+cout<<"–í–≤–µ–¥–∏—Ç–µ X –∫–æ–Ω–µ—á–Ω–æ–µ --> ";
 cin>>XEnd;
-cout<<"¬‚ÂÂ‰ËÚÂ DX --> ";
+cout<<"–í–≤–µ–µ–¥–∏—Ç–µ DX --> ";
 cin>>DX;
 double temp;
 if(DX==0)
@@ -53,7 +53,7 @@ if(DX==0)
 else if(XStart<XEnd&&DX<=0)
 	{
 		
-		cout<<"Œ¯Ë·Í‡";
+		cout<<"–û—à–∏–±–∫–∞";
 		cin.get();
 	    cin.get();
 		exit(0);
@@ -86,7 +86,7 @@ for( ;XStart<=XEnd;XStart=XStart+DX)
 	}
 	else 
    {
-       printf("|   %10.7f  |       Ó¯Ë·Í‡       |       Ó¯Ë·Í‡       |       Ó¯Ë·Í‡       |\n",XStart);
+       printf("|   %10.7f  |       –æ—à–∏–±–∫–∞       |       –æ—à–∏–±–∫–∞       |       –æ—à–∏–±–∫–∞       |\n",XStart);
  
    }
 
@@ -95,11 +95,11 @@ for( ;XStart<=XEnd;XStart=XStart+DX)
 printf("|---------------|--------------------|-----------------------------------------|\n");
 
 
-cout<<"¬‚Â‰ËÚÂ X ÔÓ‚ÂÓ˜Ì˚È --> ";
+cout<<"–í–≤–µ–¥–∏—Ç–µ X –ø—Ä–æ–≤–µ—Ä–æ—á–Ω—ã–π --> ";
 cin>>XIdeal;
  eps=0.1;
 printf("|---------------|--------------------|--------------------|--------------------|\n");
-printf("|        X      |       My_ctg(x)    |        ctg(x)      |        Sigma       |\n");
+printf("|     Epsilon   |       My_ctg(x)    |        ctg(x)      |        Sigma       |\n");
 printf("|---------------|--------------------|--------------------|--------------------|\n");
  for( ;eps>0.0000001;eps=eps/10)
 {
@@ -108,12 +108,12 @@ printf("|---------------|--------------------|--------------------|-------------
             
            cosec=(1/sin(XIdeal))*(1/sin(XIdeal));
            delta=sqrt(abs( pow(mycosec(XIdeal,eps),2)-pow(cosec,2) ) );
-           printf("|%15.7f|%20.10f|%20.10f|%20.10f|\n",XIdeal,mycosec(XIdeal,eps),cosec,delta);
+           printf("|%15.7f|%20.10f|%20.10f|%20.10f|\n",eps,mycosec(XIdeal,eps),cosec,delta);
 
 
        }
 else
-    printf("|%10.7f |       Ó¯Ë·Í‡       |       Ó¯Ë·Í‡       |       Ó¯Ë·Í‡       |\n",eps);
+    printf("|%10.7f |       –æ—à–∏–±–∫–∞       |       –æ—à–∏–±–∫–∞       |       –æ—à–∏–±–∫–∞       |\n",eps);
  }
     printf("|---------------|--------------------|-----------------------------------------|\n");
 
