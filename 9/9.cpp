@@ -80,7 +80,7 @@ for( ;XStart<=XEnd;XStart=XStart+DX)
 {
 	if((1/XStart)!=NULL)
 	{
-       cosec=(1/sin(XStart))*(1/sin(XStart));
+       cosec=pow(1/sin(XStart),2);
        delta=sqrt(abs( pow(mycosec(XStart,eps),2)-pow(cosec,2) ) );
        printf("|%15.7f|%20.10f|%20.10f|%20.10f|\n",XStart,mycosec(XStart,eps),cosec,delta);
 	}
@@ -106,7 +106,7 @@ printf("|---------------|--------------------|--------------------|-------------
 	 if((1/XIdeal)!=NULL)
       {
             
-           cosec=(1/sin(XIdeal))*(1/sin(XIdeal));
+           cosec=pow((1/sin(XIdeal)),2);
            delta=sqrt(abs( pow(mycosec(XIdeal,eps),2)-pow(cosec,2) ) );
            printf("|%15.7f|%20.10f|%20.10f|%20.10f|\n",eps,mycosec(XIdeal,eps),cosec,delta);
 
