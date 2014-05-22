@@ -15,7 +15,9 @@ using namespace std;
 int main()
 {    
     setlocale(LC_ALL, "Rus");
-	typedef double (*function)(double, double);
+	typedef double (*my_function)(double, double, double);
+	typedef double (*math_function)(double, double);
+	typedef char * (*name)();
 	HINSTANCE my_dll = LoadLibraryA("my_dll.dll");
 	if(my_dll==NULL)
 	{
@@ -24,9 +26,12 @@ int main()
 	    cin.get();
 		exit(0);
 	}
-
-	function mycosec = (function)GetProcAddress(my_dll, "my_func");
+		
+	math_function cosec = (math_function)GetProcAddress(my_dll, "myf_math");
+	my_function mycosec = (my_function)GetProcAddress(my_dll, "myf_2");
+	name Name = (name)GetProcAddress(my_dll, "Name");
 	//////////////////////////////////////////////////////////////
+	cout<<"Работаю с функцией "<<Name()<<endl<<endl;
 	cout<<"Ввеедите Epsilon --> ";
     cin>>eps;
     if(eps<=0)
@@ -78,11 +83,11 @@ else if(XStart>XEnd&&DX<0)
 
 for( ;XStart<=XEnd;XStart=XStart+DX)
 {
-	if((1/XStart)!=NULL&&XStart!=0)
+	if(sin(XStart)!=0)
 	{
-       cosec=pow(1/sin(XStart),2);
-       delta=sqrt(abs( pow(mycosec(XStart,eps),2)-pow(cosec,2) ) );
-       printf("|%15.7f|%20.10f|%20.10f|%20.10f|\n",XStart,mycosec(XStart,eps),cosec,delta);
+       
+       delta=sqrt(abs( pow(mycosec(XStart,0,eps),2)-pow(cosec(0,XStart),2) ) );
+       printf("|%15.7f|%20.10f|%20.10f|%20.10f|\n",XStart,mycosec(XStart,0,eps),cosec(0,XStart),delta);
 	}
 	else 
    {
@@ -99,16 +104,16 @@ cout<<"Введите X проверочный --> ";
 cin>>XIdeal;
  eps=0.1;
 printf("|---------------|--------------------|--------------------|--------------------|\n");
-printf("|     Epsilon   |       My_ctg(x)    |        ctg(x)      |        Sigma       |\n");
+printf("|     Epsilon   |       My_Fun(x)    |        Fun(x)      |        Sigma       |\n");
 printf("|---------------|--------------------|--------------------|--------------------|\n");
  for( ;eps>0.0000001;eps=eps/10)
 {
-	 if((1/XIdeal)!=NULL&&XIdeal!=0)
+	 if(sin(XIdeal)!=0)
       {
             
-           cosec=pow((1/sin(XIdeal)),2);
-           delta=sqrt(abs( pow(mycosec(XIdeal,eps),2)-pow(cosec,2) ) );
-           printf("|%15.7f|%20.10f|%20.10f|%20.10f|\n",eps,mycosec(XIdeal,eps),cosec,delta);
+           
+           delta=sqrt(abs( pow(mycosec(XIdeal,0,eps),2)-pow(cosec(0,XIdeal),2) ) );
+           printf("|%15.7f|%20.10f|%20.10f|%20.10f|\n",eps,mycosec(XIdeal,0,eps),cosec(0,XIdeal),delta);
 
 
        }
