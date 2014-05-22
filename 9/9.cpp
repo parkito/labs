@@ -78,7 +78,7 @@ else if(XStart>XEnd&&DX<0)
 
 for( ;XStart<=XEnd;XStart=XStart+DX)
 {
-	if((1/XStart)!=NULL)
+	if((1/XStart)!=NULL&&XStart!=0)
 	{
        cosec=pow(1/sin(XStart),2);
        delta=sqrt(abs( pow(mycosec(XStart,eps),2)-pow(cosec,2) ) );
@@ -103,7 +103,7 @@ printf("|     Epsilon   |       My_ctg(x)    |        ctg(x)      |        Sigma
 printf("|---------------|--------------------|--------------------|--------------------|\n");
  for( ;eps>0.0000001;eps=eps/10)
 {
-	 if((1/XIdeal)!=NULL)
+	 if((1/XIdeal)!=NULL&&XIdeal!=0)
       {
             
            cosec=pow((1/sin(XIdeal)),2);
@@ -113,7 +113,7 @@ printf("|---------------|--------------------|--------------------|-------------
 
        }
 else
-    printf("|%10.7f |       ошибка       |       ошибка       |       ошибка       |\n",eps);
+    printf("|   %10.7f  |       ошибка       |       ошибка       |       ошибка       |\n",eps);
  }
     printf("|---------------|--------------------|-----------------------------------------|\n");
 
