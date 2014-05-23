@@ -21,33 +21,33 @@ int main()
 	HINSTANCE my_dll = LoadLibraryA("my_dll.dll");
 	if(my_dll==NULL)
 	{
-		cout<<"Ошибка открытия DLL";
-		cin.get();
-	    cin.get();
-		exit(0);
-	}
-		
-	math_function cosec = (math_function)GetProcAddress(my_dll, "myf_math");
-	my_function mycosec = (my_function)GetProcAddress(my_dll, "myf_2");
-	name Name = (name)GetProcAddress(my_dll, "Name");
-	//////////////////////////////////////////////////////////////
-	cout<<"Работаю с функцией "<<Name()<<endl<<endl;
-	cout<<"Ввеедите Epsilon --> ";
-    cin>>eps;
-    if(eps<=0)
-	{
-		
-		cout<<"Ошибка";
+		cout<<"ќшибка открыти¤ DLL";
 		cin.get();
 	    cin.get();
 		exit(0);
 	}
 
-cout<<"Введите X начальное --> ";
+	math_function cosec = (math_function)GetProcAddress(my_dll, "myf_math");
+	my_function mycosec = (my_function)GetProcAddress(my_dll, "myf_2");
+	name Name = (name)GetProcAddress(my_dll, "FName");
+	//////////////////////////////////////////////////////////////
+	cout<<"–аботаю с функцией "<<Name()<<endl<<endl;
+	cout<<"¬веедите Epsilon --> ";
+    cin>>eps;
+    if(eps<=0)
+	{
+
+		cout<<"ќшибка";
+		cin.get();
+	    cin.get();
+		exit(0);
+	}
+
+cout<<"¬ведите X начальное --> ";
 cin>>XStart;
-cout<<"Введите X конечное --> ";
+cout<<"¬ведите X конечное --> ";
 cin>>XEnd;
-cout<<"Ввеедите DX --> ";
+cout<<"¬веедите DX --> ";
 cin>>DX;
 double temp;
 if(DX==0)
@@ -57,8 +57,8 @@ if(DX==0)
     }
 else if(XStart<XEnd&&DX<=0)
 	{
-		
-		cout<<"Ошибка";
+
+		cout<<"ќшибка";
 		cin.get();
 	    cin.get();
 		exit(0);
@@ -100,7 +100,7 @@ for( ;XStart<=XEnd;XStart=XStart+DX)
 printf("|---------------|--------------------|-----------------------------------------|\n");
 
 
-cout<<"Введите X проверочный --> ";
+cout<<"¬ведите X проверочный --> ";
 cin>>XIdeal;
  eps=0.1;
 printf("|---------------|--------------------|--------------------|--------------------|\n");
@@ -125,9 +125,9 @@ else
 
 
 
-	
-	
-	  	
+
+
+
 	cin.get();
 	cin.get();
 	return 0;

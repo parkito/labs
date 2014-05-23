@@ -7,7 +7,7 @@ using namespace std;
 
 extern "C" __declspec(dllexport) double myf_2(double, double, double);
 extern "C" __declspec(dllexport) double myf_math (double, double);
-extern "C" __declspec(dllexport) char* Name();
+extern "C" __declspec(dllexport) char* FName();
 double Karnov_func (double, double);
 double fact(double);
 double cosec(double , double);
@@ -37,5 +37,5 @@ double cosec(double x, double EPS)
 {
 	return pow(1/sin(X),2);
 }
- char* Name()
+ char* FName()
 {return "cosec(x)";}
